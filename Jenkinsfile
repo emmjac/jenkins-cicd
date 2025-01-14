@@ -3,14 +3,14 @@ pipeline {
     environment {
         MAVEN_HOME = '/usr/share/maven'  // maven home directory.  Obtain home directory using mvn --version
         ARTIFACT_PATH = 'JJtechBatchApp/target/JJtechBatchApp.war'
-        TOMCAT_URL = 'http://18.197.131.231:8080/'  // replace with your tomcat url
+        TOMCAT_URL = 'http://184.72.215.143:8080/'  // replace with your tomcat url
 
     }
     stages {
         stage('Checkout Code') {
             steps {
                // replace git URL below with your git repo url
-                git branch: 'main', url: 'https://github.com/mecbob/jenkins-cicd.git'
+                git branch: 'main', url: 'https://github.com/emmjac/jenkins-cicd.git'
             }
         }
 
