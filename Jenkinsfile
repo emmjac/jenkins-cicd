@@ -29,7 +29,7 @@ pipeline {
         stage('Scan') {
             steps {
                  dir('JJtechBatchApp') {
-                 withSonarQubeEnv(installationName: 'jenkins-sonar') { 
+                 withSonarQubeEnv(installationName: 'jenkins-sonar') { // replace with your sonarQube plugin
                     // sh './mvn clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'   To use a specific version of sonarqube
                     sh "${MAVEN_HOME}/bin/mvn clean sonar:sonar"       // uses the installed sonar plugin
                  } }
@@ -73,11 +73,11 @@ pipeline {
                     nexusArtifactUploader(
                         nexusVersion: 'nexus3',
                         protocol: 'http',
-                        nexusUrl: '18.196.157.115:8081/',  //replace me 
+                        nexusUrl: 'http://3.88.156.22:8081/',  //replace me 
                         repository: repository,
                         groupId: groupId,
                         version: version,
-                        credentialsId: 'nexus-credentials-id', // (optional) replace me
+                        credentialsId: 'jenkins-nexus', // (optional) replace me
                         artifacts: [
                             [artifactId: artifactId, file: artifactPath, type: 'war']
                         ]
